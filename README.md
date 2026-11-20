@@ -388,6 +388,15 @@ the contract page. When they cannot be determined the API says so
 (`"origin": {"known": false}`) and the page says "Unknown"; a missing creator
 is never shown as an empty one.
 
+```console
+$ curl -s localhost:8080/api/contracts/CDZZ…4PAN | jq '.origin'
+{
+  "known": true,
+  "creator": "GDUZ…7Q4K",
+  "created_ledger": 1478234
+}
+```
+
 The creator is found from the RPC's own history: the instance entry says which
 ledger last modified it, and if that ledger holds a transaction that *created*
 the entry, that transaction's source account (or the operation's, when it has
